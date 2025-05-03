@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Windows executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*;sounds" app.py  # Adjust path if necessary
+          pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py  # Adjust path if necessary
 
       - name: List files in dist/ (for debugging)
         run: |
@@ -58,7 +58,7 @@ jobs:
 
       - name: Build macOS app with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" app.py  # Adjust path if necessary
+          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py  # Adjust path if necessary
 
       - name: List files in dist/ (for debugging)
         run: |
@@ -88,7 +88,7 @@ jobs:
 
       - name: Build Linux executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" app.py  # Adjust path if necessary
+          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py  # Adjust path if necessary
 
       - name: List files in dist/ (for debugging)
         run: |
