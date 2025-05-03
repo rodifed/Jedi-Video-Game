@@ -29,7 +29,7 @@ jobs:
 
       - name: Build Windows executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*;sounds" app.py
+          pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py
 
       - name: Upload Windows executable
         uses: actions/upload-artifact@v4
@@ -56,7 +56,7 @@ jobs:
 
       - name: Build macOS app with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" app.py
+          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
 
       - name: Upload macOS app
         uses: actions/upload-artifact@v4
@@ -83,7 +83,7 @@ jobs:
 
       - name: Build Linux executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" app.py
+          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
 
       - name: Upload Linux binary
         uses: actions/upload-artifact@v4
