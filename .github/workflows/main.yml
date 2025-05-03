@@ -28,13 +28,13 @@ jobs:
 
       - name: Build Linux x86_64 executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*:sounds" Jedi.py
 
       - name: Upload Linux x86_64 executable
         uses: actions/upload-artifact@v3
         with:
           name: linux-x86_64
-          path: dist/jedi  # Adjust path to your generated executable
+          path: dist/Jedi  # Adjust path to your generated executable
 
   # Linux ARM
   build-linux-arm:
@@ -54,13 +54,13 @@ jobs:
 
       - name: Build Linux ARM executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*:sounds" Jedi.py
 
       - name: Upload Linux ARM executable
         uses: actions/upload-artifact@v3
         with:
           name: linux-arm
-          path: dist/jedi  # Adjust path to your generated executable
+          path: dist/Jedi  # Adjust path to your generated executable
 
   # macOS x86_64 (Intel)
   build-macos-x86_64:
@@ -80,13 +80,13 @@ jobs:
 
       - name: Build macOS x86_64 app with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*:sounds" Jedi.py
 
       - name: Upload macOS x86_64 app
         uses: actions/upload-artifact@v3
         with:
           name: macos-x86_64
-          path: dist/jedi  # Adjust path to your generated app
+          path: dist/Jedi.app  # Adjust path to your generated app
 
   # macOS ARM
   build-macos-arm:
@@ -106,13 +106,13 @@ jobs:
 
       - name: Build macOS ARM app with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*:sounds" Jedi.py
 
       - name: Upload macOS ARM app
         uses: actions/upload-artifact@v3
         with:
           name: macos-arm
-          path: dist/jedi  # Adjust path to your generated app
+          path: dist/Jedi.app  # Adjust path to your generated app
 
   # Windows x86_64 (Intel/AMD)
   build-windows-x86_64:
@@ -132,13 +132,13 @@ jobs:
 
       - name: Build Windows x86_64 executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*;sounds" Jedi.py
 
       - name: Upload Windows x86_64 executable
         uses: actions/upload-artifact@v3
         with:
           name: windows-x86_64
-          path: dist/jedi.exe  # Adjust path to your generated executable
+          path: dist/Jedi.exe  # Adjust path to your generated executable
 
   # Windows ARM
   build-windows-arm:
@@ -158,10 +158,10 @@ jobs:
 
       - name: Build Windows ARM executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*;sounds" Jedi.py
 
       - name: Upload Windows ARM executable
         uses: actions/upload-artifact@v3
         with:
           name: windows-arm
-          path: dist/jedi.exe  # Adjust path to your generated executable
+          path: dist/Jedi.exe  # Adjust path to your generated executable
