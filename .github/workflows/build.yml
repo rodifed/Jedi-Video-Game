@@ -10,32 +10,6 @@ on:
   workflow_dispatch:  # Allows manually triggering the workflow from the GitHub Actions UI
 
 jobs:
-  build-windows:
-    runs-on: windows-latest  # Run this job on a Windows runner
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python 3.9.13
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.13'  # Ensure Python 3.9.13 is installed
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install pyinstaller
-
-      - name: Build Windows executable with PyInstaller
-        run: |
-          pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py  # Adjust path if necessary
-
-      - name: Upload Windows executable as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-exe
-          path: dist/jedi.exe  # Adjust the path if the file name differs
-
   build-macos:
     runs-on: macos-latest  # Run this job on a macOS runner
     steps:
@@ -64,34 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: macos-app
-          path: dist/jedi.app  # Adjust the path if the file name differs
-
-  build-linux:
-    runs-on: ubuntu-latest  # Run this job on an Ubuntu runner (Linux)
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python 3.9.13
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.13'  # Ensure Python 3.9.13 is installed
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install pyinstaller
-
-      - name: Build Linux executable with PyInstaller
-        run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py  # Adjust path if necessary
-
-      - name: List files in dist/ (for debugging)
-        run: |
-          ls -la dist/
-
-      - name: Upload Linux binary as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-binary
           path: dist/jedi  # Adjust the path if the file name differs
