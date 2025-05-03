@@ -1,0 +1,167 @@
+name: Build Cross-Platform Executables
+
+on:
+  push:
+    branches:
+      - main  # Trigger the build when pushing to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull requests to the main branch
+  workflow_dispatch:  # Allow manual triggering from GitHub UI
+
+jobs:
+  # Linux x86_64 (Intel/AMD)
+  build-linux-x86_64:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build Linux x86_64 executable with PyInstaller
+        run: |
+          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+
+      - name: Upload Linux x86_64 executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-x86_64
+          path: dist/jedi  # Adjust path to your generated executable
+
+  # Linux ARM
+  build-linux-arm:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build Linux ARM executable with PyInstaller
+        run: |
+          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+
+      - name: Upload Linux ARM executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-arm
+          path: dist/jedi  # Adjust path to your generated executable
+
+  # macOS x86_64 (Intel)
+  build-macos-x86_64:
+    runs-on: macos-latest  # Use the latest macOS runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build macOS x86_64 app with PyInstaller
+        run: |
+          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+
+      - name: Upload macOS x86_64 app
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-x86_64
+          path: dist/jedi  # Adjust path to your generated app
+
+  # macOS ARM
+  build-macos-arm:
+    runs-on: macos-latest  # Use the latest macOS runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build macOS ARM app with PyInstaller
+        run: |
+          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+
+      - name: Upload macOS ARM app
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-arm
+          path: dist/jedi  # Adjust path to your generated app
+
+  # Windows x86_64 (Intel/AMD)
+  build-windows-x86_64:
+    runs-on: windows-latest  # Use the latest Windows runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build Windows x86_64 executable with PyInstaller
+        run: |
+          pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py
+
+      - name: Upload Windows x86_64 executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-x86_64
+          path: dist/jedi.exe  # Adjust path to your generated executable
+
+  # Windows ARM
+  build-windows-arm:
+    runs-on: windows-latest  # Use the latest Windows runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build Windows ARM executable with PyInstaller
+        run: |
+          pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py
+
+      - name: Upload Windows ARM executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-arm
+          path: dist/jedi.exe  # Adjust path to your generated executable
