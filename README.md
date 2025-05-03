@@ -4,6 +4,6 @@ Right now, there are no sound for lightsaber movements. Do your best. If you see
 installer for macOS and Linux. And app for Windows will be available, too.
 
 Sorry, I can't upload apps to GitHub. They are too big. I'm gonna upload a .sh, which you can just run, and you open the needed game. And, the instruction:
-1. Install Python3.9.13. The code is made for it, but you can install Python3.9 from [Python3 website](python.org "Available by 2025, may be deleted")
+1. Install Python3.9.13. The code is made for it, but you can install Python3.9 from [Python3 website](python.org "Available by 2025, may be deleted") (I actually optimised it, it will ask, do you want to install, and done)
 2. Run Jedi.sh. When you run the .sh file, it will open Terminal (Psst. If you are on MacOS, then any file may show that it can't find the developer. Just right-click, Open, Open or Open anyway.)
 3. And play!
