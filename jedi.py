@@ -12,7 +12,6 @@ import pygame
 pygame.mixer.init()
 swing_sound = pygame.mixer.Sound(os.path.join("sounds", "swing.wav"))
 
-
 # ========== CONFIG ==========
 CONFIG_FILE = "config.json"
 DEFAULT_CONFIG = {
