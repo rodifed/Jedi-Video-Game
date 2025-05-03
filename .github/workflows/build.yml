@@ -3,90 +3,99 @@ name: Build Cross-Platform Executables
 on:
   push:
     branches:
-      - main
+      - main  # Trigger the build when pushing to the main branch
   pull_request:
     branches:
-      - main
-  workflow_dispatch: {}  # Allows manual trigger via GitHub UI
+      - main  # Trigger on pull requests to the main branch
+  workflow_dispatch:  # Allows manually triggering the workflow from the GitHub Actions UI
 
 jobs:
   build-windows:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Run this job on a Windows runner
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Set up Python 3.9.13
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9.13'
+          python-version: '3.9.13'  # Ensure Python 3.9.13 is installed
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pyinstaller
 
       - name: Build Windows executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*;sounds" app.py  # Adjust path if necessary
 
-      - name: Upload Windows executable
+      - name: List files in dist/ (for debugging)
+        run: |
+          ls -la dist/
+
+      - name: Upload Windows executable as artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-exe
-          path: dist/app.exe
+          path: dist/app.exe  # Adjust the path if the file name differs
 
   build-macos:
-    runs-on: macos-latest
+    runs-on: macos-latest  # Run this job on a macOS runner
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Set up Python 3.9.13
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9.13'
+          python-version: '3.9.13'  # Ensure Python 3.9.13 is installed
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pyinstaller
 
       - name: Build macOS app with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*:sounds" app.py  # Adjust path if necessary
 
-      - name: Upload macOS app
+      - name: List files in dist/ (for debugging)
+        run: |
+          ls -la dist/
+
+      - name: Upload macOS app as artifact
         uses: actions/upload-artifact@v4
         with:
           name: macos-app
-          path: dist/app
+          path: dist/app.app  # Adjust the path if the file name differs
 
   build-linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Run this job on an Ubuntu runner (Linux)
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Set up Python 3.9.13
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9.13'
+          python-version: '3.9.13'  # Ensure Python 3.9.13 is installed
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pyinstaller
 
       - name: Build Linux executable with PyInstaller
         run: |
-          pyinstaller --onefile --add-data "sounds/*:sounds" jedi.py
+          pyinstaller --onefile --add-data "sounds/*:sounds" app.py  # Adjust path if necessary
 
-      - name: Upload Linux binary
+      - name: List files in dist/ (for debugging)
+        run: |
+          ls -la dist/
+
+      - name: Upload Linux binary as artifact
         uses: actions/upload-artifact@v4
         with:
           name: linux-binary
-          path: dist/app
+          path: dist/app  # Adjust the path if the file name differs
