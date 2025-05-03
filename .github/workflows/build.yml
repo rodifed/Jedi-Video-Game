@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-exe
-          path: dist/app.exe  # Adjust the path if the file name differs
+          path: dist/jedi.exe  # Adjust the path if the file name differs
 
   build-macos:
     runs-on: macos-latest  # Run this job on a macOS runner
@@ -64,7 +64,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: macos-app
-          path: dist/app.app  # Adjust the path if the file name differs
+          path: dist/jedi.app  # Adjust the path if the file name differs
 
   build-linux:
     runs-on: ubuntu-latest  # Run this job on an Ubuntu runner (Linux)
@@ -94,4 +94,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linux-binary
-          path: dist/app  # Adjust the path if the file name differs
+          path: dist/jedi  # Adjust the path if the file name differs
