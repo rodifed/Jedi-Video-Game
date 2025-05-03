@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch: {}  # Allows manual trigger via GitHub UI
 
 jobs:
   build-windows:
@@ -23,14 +23,16 @@ jobs:
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pyinstaller
 
       - name: Build Windows executable with PyInstaller
         run: |
           pyinstaller --onefile --add-data "sounds/*;sounds" app.py
 
       - name: Upload Windows executable
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: windows-exe
           path: dist/app.exe
@@ -48,17 +50,19 @@ jobs:
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pyinstaller
 
       - name: Build macOS app with PyInstaller
         run: |
           pyinstaller --onefile --add-data "sounds/*:sounds" app.py
 
       - name: Upload macOS app
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: macos-app
-          path: dist/app.app
+          path: dist/app
 
   build-linux:
     runs-on: ubuntu-latest
@@ -73,14 +77,16 @@ jobs:
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pyinstaller
 
       - name: Build Linux executable with PyInstaller
         run: |
           pyinstaller --onefile --add-data "sounds/*:sounds" app.py
 
       - name: Upload Linux binary
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: linux-binary
           path: dist/app
