@@ -5,5 +5,12 @@ installer for macOS and Linux. And app for Windows will be available, too.
 
 Sorry, I can't upload apps to GitHub. They are too big. I'm gonna upload a .sh, which you can just run, and you open the needed game. And, the instruction:
 1. Install Python3.9.13. The code is made for it, but you can install Python3.9 from [Python3 website](python.org "Available by 2025, may be deleted") (I actually optimised it, it will ask, do you want to install, and done)
-2. Run Jedi.sh. When you run the .sh file, it will open Terminal (Psst. If you are on MacOS, then any file may show that it can't find the developer. Just right-click, Open, Open or Open anyway.)
-3. And play!
+2. Set up the Jedi.sh. You need to do this:
+   ```bash
+   cd path/to/your/installation/of/our/game
+   chmod +x Jedi.sh
+   ```
+   This will make Jedi.sh as an executable, so, it will be read as a file, that can be run
+3. Move it everywhere you like. I would suggect moving into Desktop, but it is not always like that
+4. Run Jedi.sh. When you run the .sh file, it will open Terminal (Psst. If you are on MacOS, then any file may show that it can't find the developer. Just right-click, Open, Open or Open anyway.)
+5. And play!
