@@ -30,10 +30,6 @@ jobs:
         run: |
           pyinstaller --onefile --add-data "sounds/*;sounds" jedi.py  # Adjust path if necessary
 
-      - name: List files in dist/ (for debugging)
-        run: |
-          ls -la dist/
-
       - name: Upload Windows executable as artifact
         uses: actions/upload-artifact@v4
         with:
